@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -23,6 +25,8 @@ export default function RootLayout({
         className={`${montserrat.variable}`}
       >
         {children}
+
+        <AnimatedBackground />
       </body>
     </html>
   );

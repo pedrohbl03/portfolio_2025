@@ -6,7 +6,7 @@ import { BINARY_NAME } from '@/config/binaryName'
 
 export const AnimatedBackground = () => {
   return (
-    <div className='fixed top-0 left-0 w-full h-full -z-10 overflow-hidden'>
+    <motion.div className='fixed top-0 left-0 w-full h-full -z-10 overflow-hidden'>
       {BINARY_NAME.map((binary, index) => (
         <motion.div
           key={index}
@@ -25,7 +25,7 @@ export const AnimatedBackground = () => {
           {binary.split('').map((char, charIndex) => (
             <span
               key={charIndex}
-              className='block select-none rotate-360 text-center opacity-30'
+              className='block select-none rotate-360 text-center opacity-50'
               style={{ textShadow: '0 0 5px rgba(92, 149, 255, 0.7)' }}
             >
               {char}
@@ -33,6 +33,6 @@ export const AnimatedBackground = () => {
           ))}
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   )
 }
