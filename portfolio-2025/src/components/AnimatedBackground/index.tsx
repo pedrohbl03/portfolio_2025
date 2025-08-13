@@ -17,8 +17,8 @@ export const AnimatedBackground = () => {
             duration: 20 + Math.random() * 10,
             repeat: Infinity,
             repeatType: 'loop',
-            delay: index,
-            ease: "linear"
+            delay: Math.random() * 20,
+            ease: "linear",
           }}
           style={{ left: `${Math.random() * 100}%` }}
         >

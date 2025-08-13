@@ -4,6 +4,7 @@ import { HOME_DATA } from '@/data/home'
 import { cn } from '@/utils/cn'
 import Button from '../Button'
 import Counter from '../Counter'
+import ScrollIndicator from '../ScrollIndicator'
 
 /* interface IHeroProps {
   title: string;
@@ -72,7 +73,6 @@ export const Hero = () => {
           <p className='text-muted text-sm font-light'>Happy Clients</p>
         </div>
       </div>
-
     </>
   )
 }

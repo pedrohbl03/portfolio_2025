@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+import ScrollIndicator from '../ScrollIndicator'
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -19,6 +20,8 @@ const Header = () => {
         <span className='w-6 h-[2px] bg-primary group-hover:rotate-20 transition-all duration-200' />
         <span className='w-6 h-[2px] bg-primary group-hover:rotate-[-20deg] transition-all duration-200' />
       </button>
+
+      <ScrollIndicator />
     </header>
   )
 }
