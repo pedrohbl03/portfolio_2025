@@ -1,17 +1,30 @@
 "use client"
 
-import React from 'react'
-import { motion } from "motion/react"
+import React, { useEffect, useRef, useState } from 'react'
+import * as motion from "motion/react-client"
 import { BINARY_NAME } from '@/config/binaryName'
 
 export const AnimatedBackground = () => {
+
+  const [positions, setPositions] = useState<Array<number>>([]);
+
+  useEffect(() => {
+    const updatePositions = () => {
+      setPositions(BINARY_NAME.map(() => Math.random() * 100));
+    };
+
+    updatePositions();
+  }, []);
+
+  if (!positions.length) return null;
+
   return (
     <motion.div className='fixed top-0 left-0 w-full h-full -z-10 overflow-hidden'>
       {BINARY_NAME.map((binary, index) => (
         <motion.div
           key={index}
           className='absolute text-primary text-sm font-thin'
-          initial={{ y: -100, opacity: 0 }}
+          initial={{ y: 0, opacity: 0, left: `${positions[index] || Math.random() * 100}%` }}
           animate={{ y: '100vh', opacity: 1 }}
           transition={{
             duration: 20 + Math.random() * 10,
@@ -20,7 +33,6 @@ export const AnimatedBackground = () => {
             delay: Math.random() * 20,
             ease: "linear",
           }}
-          style={{ left: `${Math.random() * 100}%` }}
         >
           {binary.split('').map((char, charIndex) => (
             <span

@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-    --background: #171717;
-    --foreground: #ededed;
-    --primary: #5c95ff;
-    --muted: #6c757d;
-    --muted-foreground: #adb5bd;
+  --background: #171717;
+  --foreground: #ededed;
+  --primary: #5c95ff;
+  --muted: #6c757d;
+  --muted-foreground: #adb5bd;
 }
 
 @theme inline {
@@ -21,7 +21,7 @@
     --background: #171717;
     --foreground: #ededed;
     --primary: #5c95ff;
-/*     --teste-primary: #ce1de5; */
+    /*     --teste-primary: #ce1de5; */
   }
 }
 
@@ -29,4 +29,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Montserrat", sans-serif;
+
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
