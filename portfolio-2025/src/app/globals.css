@@ -12,6 +12,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+/*   --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground); */
   --font-sans: var(--font-montserrat);
   --font-mono: var(--font-montserrat);
 }
@@ -21,7 +23,8 @@
     --background: #171717;
     --foreground: #ededed;
     --primary: #5c95ff;
-    /*     --teste-primary: #ce1de5; */
+    --muted: #6c757d;
+    --muted-foreground: #adb5bd;
   }
 }
 
