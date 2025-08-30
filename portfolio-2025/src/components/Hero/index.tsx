@@ -29,7 +29,7 @@ export const Hero = () => {
               )
             })}
           </h1>
-          <p className='text-muted font-light'>
+          <p className='font-light'>
             {HOME_DATA.HERO.description}
           </p>
           <Button variant='primary' size='sm' className="text-foreground hover:text-primary font-bold">
@@ -55,14 +55,14 @@ export const Hero = () => {
           >
             <Counter from={0} to={5} />
             +</span>
-          <p className='text-muted text-sm font-light'>Years of Experience</p>
+          <p className='text-sm font-light'>Years of Experience</p>
         </div>
         <div className='flex flex-col'>
           <span
             className='text-3xl font-bold text-primary inline-flex justify-end'
           >
             <Counter from={0} to={15} />+</span>
-          <p className='text-muted text-sm font-light'>Completed Projects</p>
+          <p className='text-sm font-light'>Completed Projects</p>
         </div>
         <div className='flex flex-col'>
           <span
@@ -70,7 +70,7 @@ export const Hero = () => {
           >
             <Counter from={0} to={100} />
             +</span>
-          <p className='text-muted text-sm font-light'>Happy Clients</p>
+          <p className='text-sm font-light'>Happy Clients</p>
         </div>
       </div>
     </>

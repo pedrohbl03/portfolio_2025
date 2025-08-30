@@ -7,7 +7,7 @@ const AboutMe = () => {
       <Container>
         <div className='eyebrow mb-20'>
           <p className='text-4xl md:text-6xl font-light'>
-            My approach is driven by user-centered design, ensuring that each product is not just functional, but truly resonates with its audience.
+            I think systems need to be guided by user-centered design, ensuring that each product is not only functional, but truly work with its audience.
           </p>
         </div>
 
@@ -19,7 +19,7 @@ const AboutMe = () => {
             </div>
             <div className='col-span-12 md:col-span-7'>
               <p>
-                Having worked as a software developer for five years, I consider myself passionate about creating innovative solutions that positively impact people's lives. I have experience writing clean, efficient, and high-performance code, always striving for simplicity and quality in software development. I currently prioritize opportunities that can contribute to my learning and growth and that make sense for improving people&apos;s lives.
+                Having worked as a software developer for five years, I consider myself passionate about creating innovative solutions that positively impact people&apos;s lives. I have experience writing clean, efficient, and high-performance code, always striving for simplicity and quality in software development. I currently prioritize opportunities that can contribute to my learning and growth and that make sense for improving people&apos;s lives.
               </p>
             </div>
           </div>
