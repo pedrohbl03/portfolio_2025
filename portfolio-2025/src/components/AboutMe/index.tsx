@@ -3,7 +3,7 @@ import Container from '../Container'
 
 const AboutMe = () => {
   return (
-    <section id="about-me" className='py-16'>
+    <section id="about-me" className='pb-section'>
       <Container>
         <div className='eyebrow mb-20'>
           <p className='text-4xl md:text-6xl font-light'>

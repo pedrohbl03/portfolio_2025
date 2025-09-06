@@ -4,7 +4,6 @@ import { HOME_DATA } from '@/data/home'
 import { cn } from '@/utils/cn'
 import Button from '../Button'
 import Counter from '../Counter'
-import ScrollIndicator from '../ScrollIndicator'
 
 /* interface IHeroProps {
   title: string;
@@ -36,16 +35,13 @@ export const Hero = () => {
             HIRE ME
           </Button>
         </div>
-        {/*   
 
-      it is some lights effect
 
       <div className='absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full bg-primary/10 blur-[100px] -z-10' />
       <div className='absolute top-0 left-0 w-[300px] h-[300px] rounded-full bg-primary/10 blur-[100px] -z-10' />
       <div className='absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-primary/10 blur-[100px] -z-10' />
       <div className='absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-primary/10 blur-[100px] -z-10' />   
       
-      */}
       </Container>
 
       <div className='right-[4%] bottom-[10%] absolute text-end flex flex-col gap-8'>
