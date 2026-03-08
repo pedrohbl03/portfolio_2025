@@ -154,7 +154,7 @@ export const HOME_DATA = {
       {
         name: "MedicCont Assessoria Médica",
         role: "Full Stack Developer",
-        duration: "Jan 2022 - Oct 2022",
+        duration: "Oct 2021 - Jan 2022",
       },
       {
         name: "Legitima Transportes",
