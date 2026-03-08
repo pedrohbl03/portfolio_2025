@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as motion from "motion/react-client"
 import { BINARY_NAME } from '@/config/binaryName'
 

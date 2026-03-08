@@ -93,6 +93,10 @@ export const HOME_DATA = {
             icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'
           },
           {
+            name: 'Prisma',
+            icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg'
+          },
+          {
             name: 'SQLite',
             icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg'
           },
@@ -130,6 +134,99 @@ export const HOME_DATA = {
             icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg'
           },
         ]
+      }
+    ]
+  },
+
+  EXPERIENCE: {
+    title: "My Experience",
+    companies: [
+      {
+        name: "DeÔnibus - Travellier Group",
+        role: "Full Stack Developer",
+        duration: "Nov 2022 - Present",
+      },
+      {
+        name: "Daissen Ji",
+        role: "Full Stack Developer",
+        duration: "Jan 2022 - Oct 2022",
+      },
+      {
+        name: "MedicCont Assessoria Médica",
+        role: "Full Stack Developer",
+        duration: "Jan 2022 - Oct 2022",
+      },
+      {
+        name: "Legitima Transportes",
+        role: "Full Stack Developer",
+        duration: "Jan 2021 - Oct 2021",
+      }
+    ]
+  },
+
+  PORTFOLIO: {
+    title: "Recent Projects",
+    projects: [
+      {
+        title: "E-Commerce Platform",
+        description: "Full-stack e-commerce solution with real-time inventory management and payment integration.",
+        tags: ["React", "Node.js", "MongoDB", "Stripe"],
+        image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
+        link: "#"
+      },
+      {
+        title: "Task Management App",
+        description: "Collaborative project management tool with drag-and-drop functionality and team collaboration features.",
+        tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+        link: "#"
+      },
+      {
+        title: "Social Media Dashboard",
+        description: "Analytics dashboard for tracking social media metrics across multiple platforms in real-time.",
+        tags: ["React", "Chart.js", "Firebase", "Tailwind"],
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        link: "#"
+      },
+      {
+        title: "Mobile Fitness App",
+        description: "Cross-platform mobile app for workout tracking and personalized fitness plans.",
+        tags: ["React Native", "Expo", "Node.js", "MySQL"],
+        image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=600&fit=crop",
+        link: "#"
+      }
+    ]
+  },
+
+  BLOG: {
+    title: "Recent Posts",
+    posts: [
+      {
+        title: "Building Scalable React Applications",
+        excerpt: "Learn the best practices and patterns for building large-scale React applications that are maintainable and performant.",
+        date: "2024-03-01",
+        readTime: "5 min read",
+        tags: ["React", "JavaScript", "Architecture"],
+        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop",
+        link: "#"
+      },
+      {
+        title: "Understanding TypeScript Generics",
+        excerpt: "Deep dive into TypeScript generics and how they can help you write more reusable and type-safe code.",
+        date: "2024-02-15",
+        readTime: "8 min read",
+        tags: ["TypeScript", "Programming"],
+        image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=600&fit=crop",
+        link: "#"
+      },
+      {
+        title: "Optimizing Next.js Performance",
+        excerpt: "Practical tips and techniques to improve your Next.js application's performance and user experience.",
+        date: "2024-02-01",
+        readTime: "6 min read",
+        tags: ["Next.js", "Performance", "Web Development"],
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop",
+        link: "#"
       }
     ]
   }
