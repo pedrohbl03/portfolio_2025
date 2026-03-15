@@ -32,6 +32,7 @@ export interface BlogPost extends SanityDocument {
   tags?: string[]
   publishedAt: string
   author?: string
+  order?: number
 }
 
 // Project

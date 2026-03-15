@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import Container from '../Container'
 import { FaReact, FaArrowRight } from 'react-icons/fa'
 import * as motion from "motion/react-client"
@@ -82,6 +82,11 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
 }
 
 const Portfolio = ({ projects }: { projects: Project[] }) => {
+  // Sort projects by display order
+  const sortedProjects = useMemo(() => {
+    return [...projects].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  }, [projects])
+
   return (
     <section id="portfolio" className='pb-section'>
       <Container>
@@ -90,10 +95,10 @@ const Portfolio = ({ projects }: { projects: Project[] }) => {
           <h3 className='text-xl uppercase leading-none'>Featured Projects</h3>
         </div>
 
-        {projects.length > 0 ? (
+        {sortedProjects.length > 0 ? (
           <>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
-              {projects.slice(0, 4).map((project, index) => (
+              {sortedProjects.slice(0, 4).map((project, index) => (
                 <ProjectCard key={project._id} project={project} index={index} />
               ))}
             </div>
