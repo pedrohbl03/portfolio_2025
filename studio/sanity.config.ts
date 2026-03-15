@@ -6,7 +6,7 @@ import {deskStructure} from './deskStructure'
 
 export default defineConfig({
   name: 'default',
-  title: 'Portfolio 2025',
+  title: 'Pedro Lima - Portfolio 2025',
 
   projectId: process.env.SANITY_STUDIO_PROJECT_ID || '',
   dataset: process.env.SANITY_STUDIO_DATASET || 'production',

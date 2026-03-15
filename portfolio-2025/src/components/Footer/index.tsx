@@ -75,7 +75,7 @@ const Footer = () => {
                 { icon: FaReact, name: 'React' },
                 { icon: SiTypescript, name: 'TypeScript' },
                 { icon: SiTailwindcss, name: 'Tailwind CSS' },
-                { icon: SiFramer, name: 'Framer Motion' }
+                { icon: SiFramer, name: 'Motion' }
               ].map((tech, index) => {
                 const Icon = tech.icon
                 return (

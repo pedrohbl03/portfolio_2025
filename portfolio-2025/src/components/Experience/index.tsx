@@ -1,14 +1,30 @@
 "use client"
 
-import React, { useRef } from 'react'
+import React, { useRef, useMemo } from 'react'
 import Container from '../Container'
 import { FaReact } from 'react-icons/fa'
-import { HOME_DATA } from '@/data/home'
 import * as motion from "motion/react-client"
 import { useScroll, useTransform } from 'motion/react'
+import { Experience as ExperienceType } from '@/lib/sanity'
 
-const ExperienceCard = ({ company, index, isLast }: { company: typeof HOME_DATA.EXPERIENCE.companies[0], index: number, isLast: boolean }) => {
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+}
+
+const getDuration = (startDate: string, endDate?: string, current?: boolean) => {
+  const start = formatDate(startDate)
+  const end = current ? 'Present' : endDate ? formatDate(endDate) : 'Present'
+  return `${start} - ${end}`
+}
+
+const ExperienceCard = ({ experience, index, isLast }: { 
+  experience: ExperienceType, 
+  index: number, 
+  isLast: boolean
+}) => {
   const isEven = index % 2 === 0
+  const duration = getDuration(experience.startDate, experience.endDate, experience.current)
 
   return (
     <>
@@ -25,22 +41,36 @@ const ExperienceCard = ({ company, index, isLast }: { company: typeof HOME_DATA.
         className='group pb-12 md:hidden'
       >
         <div className='space-y-2'>
-          {/* Role */}
+          {/* Position */}
           <h5 className='text-sm text-muted-foreground group-hover:text-primary 
                        transition-colors duration-300'>
-            {company.role}
+            {experience.position}
           </h5>
           
           {/* Company name */}
           <h4 className='text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight
                        group-hover:text-primary transition-colors duration-300'>
-            {company.name}
+            {experience.company}
           </h4>
           
           {/* Duration */}
           <p className='text-sm text-muted-foreground'>
-            {company.duration}
+            {duration}
           </p>
+
+          {/* Technologies */}
+          {experience.technologies && experience.technologies.length > 0 && (
+            <div className='flex flex-wrap gap-2 pt-2'>
+              {experience.technologies.map((tech, techIndex) => (
+                <span 
+                  key={techIndex}
+                  className='text-xs text-muted-foreground'
+                >
+                  {tech}{techIndex < (experience.technologies?.length ?? 0) - 1 ? ' /' : ''}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </motion.div>
       
@@ -74,7 +104,7 @@ const ExperienceCard = ({ company, index, isLast }: { company: typeof HOME_DATA.
           delay: index * 0.1,
           ease: [0.4, 0, 0.2, 1]
         }}
-        className={`hidden md:grid grid-cols-12 gap-8 items-center relative ${index !== HOME_DATA.EXPERIENCE.companies.length - 1 ? 'mb-32' : ''}`}
+        className={`hidden md:grid grid-cols-12 gap-8 items-center relative ${!isLast ? 'mb-32' : ''}`}
       >
         {/* Timeline dot with date */}
         <div className='absolute left-1/2 -translate-x-1/2 flex flex-col items-center z-10'>
@@ -88,7 +118,7 @@ const ExperienceCard = ({ company, index, isLast }: { company: typeof HOME_DATA.
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
           >
-            <span className='text-sm font-bold text-primary whitespace-nowrap'>{company.duration}</span>
+            <span className='text-sm font-bold text-primary whitespace-nowrap'>{duration}</span>
           </motion.div>
           
           {/* Timeline dot */}
@@ -111,22 +141,36 @@ const ExperienceCard = ({ company, index, isLast }: { company: typeof HOME_DATA.
             transition={{ duration: 0.3 }}
           >
             <div className='space-y-3'>
-              {/* Role */}
+              {/* Position */}
               <h5 className='text-base text-muted-foreground group-hover:text-primary 
                            transition-colors duration-300'>
-                {company.role}
+                {experience.position}
               </h5>
               
               {/* Company name */}
               <h4 className='text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight
                            group-hover:text-primary transition-colors duration-300'>
-                {company.name}
+                {experience.company}
               </h4>
               
               {/* Duration */}
               <p className='text-base text-muted-foreground'>
-                {company.duration}
+                {duration}
               </p>
+
+              {/* Technologies */}
+              {experience.technologies && experience.technologies.length > 0 && (
+                <div className={`flex flex-wrap gap-2 ${isEven ? 'justify-end' : ''}`}>
+                  {experience.technologies.slice(0, 5).map((tech, techIndex) => (
+                    <span 
+                      key={techIndex}
+                      className='text-xs text-muted-foreground'
+                    >
+                      {tech}{techIndex < Math.min(experience.technologies?.length ?? 0, 5) - 1 ? ' /' : ''}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
@@ -135,7 +179,7 @@ const ExperienceCard = ({ company, index, isLast }: { company: typeof HOME_DATA.
   )
 }
 
-const Experience = () => {
+const Experience = ({ experiences }: { experiences: ExperienceType[] }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -144,39 +188,50 @@ const Experience = () => {
 
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
 
+  // Sort experiences by display order
+  const sortedExperiences = useMemo(() => {
+    return [...experiences].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  }, [experiences])
+
   return (
     <section className="pb-section" id="experience" ref={containerRef}>
       <Container>
         <div className='flex items-center gap-4 mb-16'>
           <FaReact className="motion-safe:animate-spin duration-7000" size={24} />
-          <h3 className='text-xl uppercase leading-none'>{HOME_DATA.EXPERIENCE.title}</h3>
+          <h3 className='text-xl uppercase leading-none'>Work Experience</h3>
         </div>
 
-        <div className='relative'>
-          {/* Timeline line background - Desktop only */}
-          <div className='absolute left-1/2 -translate-x-1/2 w-[2px] h-full bg-muted-foreground/20 
-                        hidden md:block' />
-          
-          {/* Animated timeline line - Desktop only */}
-          <motion.div 
-            className='absolute left-1/2 -translate-x-1/2 w-[2px] bg-primary 
-                     shadow-[0_0_10px_rgba(92,149,255,0.5)]
-                     hidden md:block origin-top'
-            style={{ height: lineHeight }}
-          />
+        {sortedExperiences.length > 0 ? (
+          <div className='relative'>
+            {/* Timeline line background - Desktop only */}
+            <div className='absolute left-1/2 -translate-x-1/2 w-[2px] h-full bg-muted-foreground/20 
+                          hidden md:block' />
+            
+            {/* Animated timeline line - Desktop only */}
+            <motion.div 
+              className='absolute left-1/2 -translate-x-1/2 w-[2px] bg-primary 
+                       shadow-[0_0_10px_rgba(92,149,255,0.5)]
+                       hidden md:block origin-top'
+              style={{ height: lineHeight }}
+            />
 
-          {/* Experience cards */}
-          <div className='space-y-0 md:space-y-0'>
-            {HOME_DATA.EXPERIENCE.companies.map((company, index) => (
-              <ExperienceCard 
-                key={index} 
-                company={company} 
-                index={index} 
-                isLast={index === HOME_DATA.EXPERIENCE.companies.length - 1}
-              />
-            ))}
+            {/* Experience cards */}
+            <div className='space-y-0 md:space-y-0'>
+              {sortedExperiences.map((experience, index) => (
+                <ExperienceCard 
+                  key={experience._id} 
+                  experience={experience} 
+                  index={index} 
+                  isLast={index === sortedExperiences.length - 1}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className='text-center py-16'>
+            <p className='text-muted-foreground'>No work experience added yet.</p>
+          </div>
+        )}
       </Container>
     </section>
   )

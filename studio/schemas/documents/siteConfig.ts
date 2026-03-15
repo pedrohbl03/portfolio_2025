@@ -108,11 +108,17 @@ export const siteConfig = defineType({
       name: 'seo',
       title: 'SEO Settings',
       type: 'object',
+      description: 'Search engine optimization and social sharing',
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
       fields: [
         {
           name: 'metaTitle',
           title: 'Meta Title',
           type: 'string',
+          description: 'Page title for search engines (50-60 characters)',
           validation: (Rule) => Rule.required().max(60),
         },
         {
@@ -120,6 +126,7 @@ export const siteConfig = defineType({
           title: 'Meta Description',
           type: 'text',
           rows: 3,
+          description: 'Page description for search engines (150-160 characters)',
           validation: (Rule) => Rule.required().max(160),
         },
         {
@@ -130,15 +137,63 @@ export const siteConfig = defineType({
           options: {
             layout: 'tags',
           },
+          description: 'SEO keywords for your site',
         },
         {
           name: 'ogImage',
           title: 'Open Graph Image',
           type: 'image',
-          description: 'Recommended size: 1200x630px',
+          description: 'Social media preview image (Recommended: 1200x630px)',
           options: {
             hotspot: true,
           },
+        },
+        {
+          name: 'twitterHandle',
+          title: 'Twitter Handle',
+          type: 'string',
+          description: 'Your Twitter username (without @)',
+          placeholder: 'username',
+        },
+        {
+          name: 'twitterCard',
+          title: 'Twitter Card Type',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Summary', value: 'summary'},
+              {title: 'Summary Large Image', value: 'summary_large_image'},
+            ],
+          },
+          initialValue: 'summary_large_image',
+        },
+        {
+          name: 'canonicalUrl',
+          title: 'Canonical URL',
+          type: 'url',
+          description: 'Primary URL for your site (e.g., https://yoursite.com)',
+        },
+        {
+          name: 'language',
+          title: 'Site Language',
+          type: 'string',
+          initialValue: 'en',
+          description: 'ISO language code (e.g., en, pt, es)',
+        },
+        {
+          name: 'robots',
+          title: 'Robots Meta Tag',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Index, Follow (Default)', value: 'index,follow'},
+              {title: 'No Index, Follow', value: 'noindex,follow'},
+              {title: 'Index, No Follow', value: 'index,nofollow'},
+              {title: 'No Index, No Follow', value: 'noindex,nofollow'},
+            ],
+          },
+          initialValue: 'index,follow',
+          description: 'Control search engine indexing',
         },
       ],
     }),
@@ -329,6 +384,7 @@ export const siteConfig = defineType({
       name: 'siteSettings',
       title: 'Site Settings',
       type: 'object',
+      description: 'Control site behavior and analytics',
       fields: [
         {
           name: 'maintenanceMode',
@@ -338,34 +394,91 @@ export const siteConfig = defineType({
           description: 'Enable to show maintenance page',
         },
         {
-          name: 'showBlogSection',
-          title: 'Show Blog Section',
-          type: 'boolean',
-          initialValue: true,
-        },
-        {
-          name: 'showPortfolioSection',
-          title: 'Show Portfolio Section',
-          type: 'boolean',
-          initialValue: true,
-        },
-        {
-          name: 'showExperienceSection',
-          title: 'Show Experience Section',
-          type: 'boolean',
-          initialValue: true,
-        },
-        {
-          name: 'showSkillsSection',
-          title: 'Show Skills Section',
-          type: 'boolean',
-          initialValue: true,
-        },
-        {
           name: 'googleAnalyticsId',
           title: 'Google Analytics ID',
           type: 'string',
           description: 'e.g., G-XXXXXXXXXX',
+        },
+        {
+          name: 'googleTagManagerId',
+          title: 'Google Tag Manager ID',
+          type: 'string',
+          description: 'e.g., GTM-XXXXXXX',
+        },
+        {
+          name: 'facebookPixelId',
+          title: 'Facebook Pixel ID',
+          type: 'string',
+        },
+      ],
+    }),
+
+    // Component Visibility Settings
+    defineField({
+      name: 'componentVisibility',
+      title: 'Home Page Components',
+      type: 'object',
+      description: 'Control which sections appear on the home page',
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
+      fields: [
+        {
+          name: 'showHero',
+          title: '🎯 Show Hero Section',
+          type: 'boolean',
+          initialValue: true,
+          description: 'Main hero/banner section',
+        },
+        {
+          name: 'showAboutMe',
+          title: '👤 Show About Me Section',
+          type: 'boolean',
+          initialValue: true,
+          description: 'About/Bio section',
+        },
+        {
+          name: 'showSkills',
+          title: '⚡ Show Skills Section',
+          type: 'boolean',
+          initialValue: true,
+          description: 'Technical skills showcase',
+        },
+        {
+          name: 'showExperience',
+          title: '💼 Show Experience Section',
+          type: 'boolean',
+          initialValue: true,
+          description: 'Work experience timeline',
+        },
+        {
+          name: 'showPortfolio',
+          title: '🎨 Show Portfolio Section',
+          type: 'boolean',
+          initialValue: true,
+          description: 'Featured projects/portfolio',
+        },
+        {
+          name: 'showBlog',
+          title: '📝 Show Blog Section',
+          type: 'boolean',
+          initialValue: true,
+          description: 'Latest blog posts',
+        },
+        {
+          name: 'showNewsletter',
+          title: '📬 Show Newsletter Section',
+          type: 'boolean',
+          initialValue: true,
+          description: 'Newsletter signup',
+        },
+        {
+          name: 'showFooter',
+          title: '🦶 Show Footer',
+          type: 'boolean',
+          initialValue: true,
+          description: 'Site footer',
         },
       ],
     }),
