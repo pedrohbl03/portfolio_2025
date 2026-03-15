@@ -52,21 +52,21 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
       {/* Circular Expanding Backdrop */}
       <motion.div
         className='fixed inset-0 z-[100]'
-        initial={{ 
+        initial={{
           clipPath: 'circle(0px at calc(100% - 41px) 41px)',
           opacity: 0
         }}
-        animate={{ 
-          clipPath: isOpen 
+        animate={{
+          clipPath: isOpen
             ? `circle(${maxDiameter}px at calc(100% - 41px) 41px)`
             : 'circle(0px at calc(100% - 41px) 41px)',
           opacity: isOpen ? 1 : 0
         }}
-        transition={{ 
+        transition={{
           duration: 0.6,
           ease: [0.4, 0, 0.2, 1]
         }}
-        style={{ 
+        style={{
           pointerEvents: isOpen ? 'auto' : 'none',
           backgroundColor: 'rgba(23, 23, 23, 0.98)',
           backdropFilter: 'blur(12px)',
@@ -80,15 +80,15 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
       <motion.nav
         className='fixed inset-0 z-[101] flex items-center justify-center'
         initial={{ opacity: 0 }}
-        animate={{ 
+        animate={{
           opacity: isOpen ? 1 : 0,
         }}
-        transition={{ 
+        transition={{
           duration: 0.3,
           delay: isOpen ? 0.2 : 0,
-          ease: [0.4, 0, 0.2, 1] 
+          ease: [0.4, 0, 0.2, 1]
         }}
-        style={{ 
+        style={{
           pointerEvents: isOpen ? 'auto' : 'none',
           width: '100vw',
           height: '100vh'
@@ -99,11 +99,11 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
             <motion.li
               key={item.href}
               initial={{ opacity: 0, x: 50 }}
-              animate={{ 
+              animate={{
                 opacity: isOpen ? 1 : 0,
                 x: isOpen ? 0 : 50
               }}
-              transition={{ 
+              transition={{
                 duration: 0.4,
                 delay: isOpen ? 0.3 + index * 0.08 : 0,
                 ease: [0.4, 0, 0.2, 1]
